@@ -3,8 +3,8 @@ import { Controller, Get, Param, Post, Body, HttpCode, HttpStatus, Res } from '@
 @Controller('coffees')
 export class CoffeesController {
 	@Get()
-	findAll(@Res() response) {
-		response.status(200).send('This action return all coffees')
+	findAll() {
+		return 'This action return all coffees'
 	}
 	
 	@Get(':id')
