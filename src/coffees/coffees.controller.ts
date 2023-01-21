@@ -6,5 +6,10 @@ export class CoffeesController {
 	findAll() {
 		return 'This action return all coffees'
 	}
+	
+	@Get(':id')
+	findOne(@Param('id') id: string) {
+		return `This action return #${id} coffee`
+	}
 }
   
