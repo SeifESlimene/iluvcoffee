@@ -1,5 +1,5 @@
 import { PaginationQueryDto } from './../common/dto/pagination-query.dto';
-import { HttpException, HttpStatus, Inject, Injectable, NotFoundException } from '@nestjs/common';
+import { HttpException, HttpStatus, Inject, Injectable, NotFoundException, Scope } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Connection, Repository } from 'typeorm';
 import { CreateCoffeeDto } from './dto/create-coffee.dto';
@@ -9,7 +9,7 @@ import { Flavor } from './entities/flavor.entity';
 import { Event } from '../events/entities/event.entity';
 import { COFFEE_BRANDS } from './coffees.constants';
 
-@Injectable()
+@Injectable({ scope: Scope.REQUEST })
 export class CoffeesService {
     constructor(
         @InjectRepository(Coffee)
@@ -19,7 +19,7 @@ export class CoffeesService {
         private readonly connection: Connection,
         @Inject(COFFEE_BRANDS) coffeeBrands: string[]
     ) {
-        console.log(coffeeBrands)
+        console.log('CoffeeService instantiated')
     }
 
 	findAll(paginationQuery: PaginationQueryDto) {
