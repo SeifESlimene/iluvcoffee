@@ -1,3 +1,4 @@
+import { WrapResponseInterceptor } from './common/interceptors/wrap-response.interceptor';
 import { ApiKeyGuard } from './common/guards/api-key.guard';
 import { HttpExceptionFilter } from './common/filters/http-exception.filter';
 import { ValidationPipe } from '@nestjs/common'
@@ -17,6 +18,7 @@ async function bootstrap() {
     }),
   );
   app.useGlobalFilters(new HttpExceptionFilter())
+  app.useGlobalInterceptors(new WrapResponseInterceptor)
   await app.listen(3000);
 }
 bootstrap();

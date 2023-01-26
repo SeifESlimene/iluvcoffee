@@ -11,8 +11,8 @@ import { Public } from 'src/common/decorators/public.decorator';
 @Controller('coffees')
 export class CoffeesController {
 	constructor(private readonly coffeesService: CoffeesService, @Inject(REQUEST) private readonly request: Request) {
-		console.log('CoffeesController created')
-		console.log(request.headers)
+		// console.log('CoffeesController created')
+		// console.log(request.headers)
 	}
 
 	@Public()
