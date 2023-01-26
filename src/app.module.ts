@@ -9,13 +9,13 @@ import * as Joi from '@hapi/joi';
 
 @Module({
   imports: [
+    CoffeesModule,
     ConfigModule.forRoot({
       validationSchema: Joi.object({
         DATABASE_HOST: Joi.required(),
         DATABASE_PORT: Joi.number().default(5432)
       })
     }),
-    CoffeesModule,
     TypeOrmModule.forRoot({
       type: 'postgres',
       host: process.env.DATABASE_HOST,
