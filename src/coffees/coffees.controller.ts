@@ -6,6 +6,7 @@ import { UpdateCoffeeDto } from './dto/update-coffee.dto';
 import { Request } from 'express'
 import { REQUEST } from '@nestjs/core';
 import { Public } from 'src/common/decorators/public.decorator';
+import { ParseIntPipe } from 'src/common/pipes/parse-int.pipe';
 
 @UsePipes(ValidationPipe) // Controlled Scoped Pipe
 @Controller('coffees')
@@ -25,8 +26,8 @@ export class CoffeesController {
 	
 	@UsePipes(ValidationPipe) // Method Scoped Pipe
 	@Get(':id')
-	findOne(@Param('id') id: number) {
-		// console.log(typeof id);
+	findOne(@Param('id', ParseIntPipe) id: number) {
+		console.log(id);
 		
 		return this.coffeesService.findOne('' + id)
 	}
