@@ -1,5 +1,4 @@
 import { Controller, Get, Param, Post, Body, Patch, Delete, Query, Inject, UsePipes, ValidationPipe } from '@nestjs/common';
-import { PaginationQueryDto } from 'src/common/dto/pagination-query.dto';
 import { CoffeesService } from './coffees.service';
 import { CreateCoffeeDto } from './dto/create-coffee.dto';
 import { UpdateCoffeeDto } from './dto/update-coffee.dto';
@@ -9,6 +8,7 @@ import { Public } from 'src/common/decorators/public.decorator';
 import { ParseIntPipe } from 'src/common/pipes/parse-int.pipe';
 import { Protocol } from 'src/common/decorators/protocol.decorator';
 import { ApiForbiddenResponse, ApiResponse, ApiTags } from '@nestjs/swagger';
+import { PaginationQueryDto } from 'src/common/dto/pagination-query.dto';
 
 @ApiTags('coffees')
 @UsePipes(ValidationPipe) // Controlled Scoped Pipe
