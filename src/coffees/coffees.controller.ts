@@ -8,6 +8,7 @@ import { REQUEST } from '@nestjs/core';
 import { Public } from 'src/common/decorators/public.decorator';
 import { ParseIntPipe } from 'src/common/pipes/parse-int.pipe';
 import { Protocol } from 'src/common/decorators/protocol.decorator';
+import { ApiForbiddenResponse, ApiResponse } from '@nestjs/swagger';
 
 @UsePipes(ValidationPipe) // Controlled Scoped Pipe
 @Controller('coffees')
@@ -17,7 +18,7 @@ export class CoffeesController {
 		// console.log(request.headers)
 	}
 
-
+	@ApiForbiddenResponse({ description: 'Forbidden.' })
 	@Public()
 	@Get()
 	async findAll(@Protocol('https') protocol: string, @Query() paginationQuery: PaginationQueryDto) {
