@@ -8,8 +8,9 @@ import { REQUEST } from '@nestjs/core';
 import { Public } from 'src/common/decorators/public.decorator';
 import { ParseIntPipe } from 'src/common/pipes/parse-int.pipe';
 import { Protocol } from 'src/common/decorators/protocol.decorator';
-import { ApiForbiddenResponse, ApiResponse } from '@nestjs/swagger';
+import { ApiForbiddenResponse, ApiResponse, ApiTags } from '@nestjs/swagger';
 
+@ApiTags('coffees')
 @UsePipes(ValidationPipe) // Controlled Scoped Pipe
 @Controller('coffees')
 export class CoffeesController {
