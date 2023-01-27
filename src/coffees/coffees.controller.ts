@@ -1,4 +1,4 @@
-import { Controller, Get, Param, Post, Body, Patch, Delete, Query, Inject, UsePipes, ValidationPipe, SetMetadata } from '@nestjs/common';
+import { Controller, Get, Param, Post, Body, Patch, Delete, Query, Inject, UsePipes, ValidationPipe } from '@nestjs/common';
 import { PaginationQueryDto } from 'src/common/dto/pagination-query.dto';
 import { CoffeesService } from './coffees.service';
 import { CreateCoffeeDto } from './dto/create-coffee.dto';
@@ -22,7 +22,7 @@ export class CoffeesController {
 	@Get()
 	async findAll(@Protocol('https') protocol: string, @Query() paginationQuery: PaginationQueryDto) {
 
-		console.log(protocol)
+		// console.log(protocol)
 		// await new Promise(resolve => setTimeout(resolve, 2000))
 		return this.coffeesService.findAll(paginationQuery)
 	}
@@ -30,7 +30,7 @@ export class CoffeesController {
 	@UsePipes(ValidationPipe) // Method Scoped Pipe
 	@Get(':id')
 	findOne(@Param('id', ParseIntPipe) id: number) {
-		console.log(id);
+		// console.log(id);
 		
 		return this.coffeesService.findOne('' + id)
 	}
@@ -51,7 +51,3 @@ export class CoffeesController {
 		return this.coffeesService.remove(id)
 	}
 }
-function SetMetaData(arg0: string, arg1: boolean) {
-	throw new Error('Function not implemented.');
-}
-
