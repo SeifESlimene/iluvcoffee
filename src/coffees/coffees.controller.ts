@@ -4,11 +4,11 @@ import { CreateCoffeeDto } from './dto/create-coffee.dto';
 import { UpdateCoffeeDto } from './dto/update-coffee.dto';
 import { Request } from 'express'
 import { REQUEST } from '@nestjs/core';
-import { Public } from 'src/common/decorators/public.decorator';
-import { ParseIntPipe } from 'src/common/pipes/parse-int.pipe';
-import { Protocol } from 'src/common/decorators/protocol.decorator';
+import { Public } from '../common/decorators/public.decorator';
+import { ParseIntPipe } from '../common/pipes/parse-int.pipe';
+import { Protocol } from '../common/decorators/protocol.decorator';
 import { ApiForbiddenResponse, ApiResponse, ApiTags } from '@nestjs/swagger';
-import { PaginationQueryDto } from 'src/common/dto/pagination-query.dto';
+import { PaginationQueryDto } from '../common/dto/pagination-query.dto';
 
 @ApiTags('coffees')
 @UsePipes(ValidationPipe) // Controlled Scoped Pipe
