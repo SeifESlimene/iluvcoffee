@@ -20,7 +20,7 @@ export class CoffeesController {
 	@Public()
 	@Get()
 	async findAll(@Query() paginationQuery: PaginationQueryDto) {
-		await new Promise(resolve => setTimeout(resolve, 5000))
+		// await new Promise(resolve => setTimeout(resolve, 2000))
 		return this.coffeesService.findAll(paginationQuery)
 	}
 	
