@@ -7,6 +7,7 @@ import { Request } from 'express'
 import { REQUEST } from '@nestjs/core';
 import { Public } from 'src/common/decorators/public.decorator';
 import { ParseIntPipe } from 'src/common/pipes/parse-int.pipe';
+import { Protocol } from 'src/common/decorators/protocol.decorator';
 
 @UsePipes(ValidationPipe) // Controlled Scoped Pipe
 @Controller('coffees')
@@ -19,7 +20,9 @@ export class CoffeesController {
 
 	@Public()
 	@Get()
-	async findAll(@Query() paginationQuery: PaginationQueryDto) {
+	async findAll(@Protocol('https') protocol: string, @Query() paginationQuery: PaginationQueryDto) {
+
+		console.log(protocol)
 		// await new Promise(resolve => setTimeout(resolve, 2000))
 		return this.coffeesService.findAll(paginationQuery)
 	}
