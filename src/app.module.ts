@@ -8,9 +8,12 @@ import { ConfigModule } from '@nestjs/config'
 import appConfig from './config/app.config';
 import { APP_PIPE } from '@nestjs/core';
 import { CommonModule } from './common/common.module';
+import { ScheduleModule } from '@nestjs/schedule';
+import { LogCron } from './common/crons/log.cron';
 
 @Module({
   imports: [
+    ScheduleModule.forRoot(),
     TypeOrmModule.forRootAsync({
       useFactory: () => ({
         type: 'postgres',
@@ -35,7 +38,8 @@ import { CommonModule } from './common/common.module';
     {
       provide: APP_PIPE,
       useClass: ValidationPipe // Globally Scoped Pipe
-    }
+    },
+    LogCron
   ],
 })
 export class AppModule {}
